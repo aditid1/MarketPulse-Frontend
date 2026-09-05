@@ -23,7 +23,7 @@ const [alertsLoading, setAlertsLoading] = useState(true);
   const fetchStocks = () => {
     setLoading(true);
 
-    fetch(" https://marketpulse-backend-q4wg.onrender.com")
+    fetch("https://marketpulse-backend-q4wg.onrender.com/watchlist")
       .then((response) => response.json())
       .then((data) => {
         const previousSnapshot = JSON.parse(
@@ -103,7 +103,7 @@ const [alertsLoading, setAlertsLoading] = useState(true);
 const fetchInsights = () => {
   setInsightsLoading(true);
 
-  fetch(" https://marketpulse-backend-q4wg.onrender.com")
+  fetch("https://marketpulse-backend-q4wg.onrender.com/insights")
 
     .then((response) => response.json())
     .then((data) => {
@@ -121,7 +121,7 @@ const fetchInsights = () => {
 const fetchHistory = () => {
   setHistoryLoading(true);
 
-  fetch(" https://marketpulse-backend-q4wg.onrender.com")
+  fetch(" https://marketpulse-backend-q4wg.onrender.com/history")
     .then((response) => response.json())
     .then((data) => {
       setHistory(data);
@@ -136,7 +136,7 @@ const fetchHistory = () => {
 const fetchAlerts = () => {
   setAlertsLoading(true);
 
-  fetch(" https://marketpulse-backend-q4wg.onrender.com")
+  fetch(" https://marketpulse-backend-q4wg.onrender.com/alerts")
     .then((response) => response.json())
     .then((data) => {
       setAlerts(data.alerts || []);
@@ -156,12 +156,12 @@ const fetchAlerts = () => {
 
     setAddingStock(true);
 
-    fetch(
-      `https://marketpulse-backend-q4wg.onrender.com${newSymbol.toUpperCase()}`,
-      {
-        method: "POST",
-      }
-    )
+   fetch(
+  `https://marketpulse-backend-q4wg.onrender.com/watchlist/${newSymbol.toUpperCase()}`,
+  {
+    method: "POST",
+  }
+)
       .then((response) => response.json())
       .then((data) => {
         if (data.error) {
@@ -194,11 +194,11 @@ const fetchAlerts = () => {
     if (!confirmRemove) return;
 
     fetch(
-      `https://marketpulse-backend-q4wg.onrender.com${symbol}`,
-      {
-        method: "DELETE",
-      }
-    )
+  `https://marketpulse-backend-q4wg.onrender.com/watchlist/${symbol}`,
+  {
+    method: "DELETE",
+  }
+)
       .then((response) => response.json())
       .then((data) => {
         if (data.error) {
