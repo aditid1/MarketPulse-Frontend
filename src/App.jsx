@@ -23,7 +23,7 @@ const [alertsLoading, setAlertsLoading] = useState(true);
   const fetchStocks = () => {
     setLoading(true);
 
-    fetch("http://127.0.0.1:8000/watchlist")
+    fetch(" https://marketpulse-backend-q4wg.onrender.com")
       .then((response) => response.json())
       .then((data) => {
         const previousSnapshot = JSON.parse(
@@ -103,7 +103,8 @@ const [alertsLoading, setAlertsLoading] = useState(true);
 const fetchInsights = () => {
   setInsightsLoading(true);
 
-  fetch("http://127.0.0.1:8000/insights")
+  fetch(" https://marketpulse-backend-q4wg.onrender.com")
+
     .then((response) => response.json())
     .then((data) => {
       setInsights(data);
@@ -120,7 +121,7 @@ const fetchInsights = () => {
 const fetchHistory = () => {
   setHistoryLoading(true);
 
-  fetch("http://127.0.0.1:8000/history")
+  fetch(" https://marketpulse-backend-q4wg.onrender.com")
     .then((response) => response.json())
     .then((data) => {
       setHistory(data);
@@ -135,7 +136,7 @@ const fetchHistory = () => {
 const fetchAlerts = () => {
   setAlertsLoading(true);
 
-  fetch("http://127.0.0.1:8000/alerts")
+  fetch(" https://marketpulse-backend-q4wg.onrender.com")
     .then((response) => response.json())
     .then((data) => {
       setAlerts(data.alerts || []);
@@ -156,7 +157,7 @@ const fetchAlerts = () => {
     setAddingStock(true);
 
     fetch(
-      `http://127.0.0.1:8000/watchlist/${newSymbol.toUpperCase()}`,
+      `https://marketpulse-backend-q4wg.onrender.com${newSymbol.toUpperCase()}`,
       {
         method: "POST",
       }
@@ -193,7 +194,7 @@ const fetchAlerts = () => {
     if (!confirmRemove) return;
 
     fetch(
-      `http://127.0.0.1:8000/watchlist/${symbol}`,
+      `https://marketpulse-backend-q4wg.onrender.com${symbol}`,
       {
         method: "DELETE",
       }
